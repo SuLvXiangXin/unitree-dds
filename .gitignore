@@ -1,0 +1,8 @@
+/.venv/
+/.build/
+/dist/
+/third_party/unitree_sdk2/
+/src/unitree_dds/_native/
+__pycache__/
+*.pyc
+/.pytest_cache/

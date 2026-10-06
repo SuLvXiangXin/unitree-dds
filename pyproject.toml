@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "unitree-dds"
+version = "0.1.0"
+description = "Thin Python/C++ Unitree HG DDS endpoints"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+dependencies = ["numpy>=1.17.4"]
+
+[dependency-groups]
+dev = ["pytest>=7,<9"]
+
+[tool.hatch.build]
+artifacts = ["src/unitree_dds/_native/**"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/unitree_dds"]
+
+[tool.hatch.build.hooks.custom]
+path = "hatch_build.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv]
+cache-keys = [{ file = "pyproject.toml" }, { file = "hatch_build.py" }, { file = "src/unitree_dds/__init__.py" }, { file = "src/unitree_dds/_native/build_info.json" }]
